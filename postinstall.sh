@@ -30,20 +30,20 @@ ARGV5=$5 # Fifth argument is Base folder of LoxBerry
 
 # Unzipping Owncloud Sources
 echo "<INFO> Unzipping Owncloud Sources..."
-/usr/bin/unzip -d $ARGV5/data/plugins/$ARGV3 $ARGV5/data/plugins/$ARGV3/owncloud.zip
-echo "<INFO> Moving Dummy Config File to your Owncloud installation..."
-shopt -s dotglob # Also copy hidden files (.something)
-mv -v $ARGV5/data/plugins/$ARGV3/owncloud/* $ARGV5/webfrontend/html/plugins/$ARGV3/
-shopt -u dotglob
-rm -r -v $ARGV5/data/plugins/$ARGV3/owncloud
+/usr/bin/unzip -d /tmp $ARGV5/data/plugins/$ARGV3/owncloud.zip
 rm -r -v $ARGV5/data/plugins/$ARGV3/owncloud.zip
+echo "<INFO> Installing Owncloud Sources..."
+mv -v /tmp/owncloud/* $ARGV5/webfrontend/html/plugins/$ARGV3/
+mv -v /tmp/owncloud/.* $ARGV5/webfrontend/html/plugins/$ARGV3/
+rm -r -v /tmp/owncloud
 
 # Move Dummy Config file to installation and replacing dummy vars
-echo "<INFO> Moving Dummy Config File to your Owncloud installation..."
-mv -v $ARGV5/data/plugins/$ARGV3/config.php $ARGV5/webfrontend/html/plugins/$ARGV3/config/
+echo "<INFO> Installing Dummy Config..."
+mv -v $ARGV5/data/plugins/$ARGV3/config.php $ARGV5/config/plugins/$ARGV3/
+ln -s $ARGV5/config/plugins/$ARGV3/config.php $ARGV5/webfrontend/html/plugins/$ARGV3/config/config.php
 
-/bin/sed -i "s:REPLACEFOLDERNAME:$ARGV3:" $ARGV5/webfrontend/html/plugins/$ARGV3/config/config.php
-/bin/sed -i "s:REPLACEINSTALLFOLDER:$ARGV5:" $ARGV5/webfrontend/html/plugins/$ARGV3/config/config.php
+/bin/sed -i "s:REPLACEFOLDERNAME:$ARGV3:" $ARGV5/config/plugins/$ARGV3/config.php
+/bin/sed -i "s:REPLACEINSTALLFOLDER:$ARGV5:" $ARGV5/config/plugins/$ARGV3/config.php
 
 # Exit with Status 0
 exit 0
