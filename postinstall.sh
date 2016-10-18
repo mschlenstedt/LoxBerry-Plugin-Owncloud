@@ -30,8 +30,8 @@ ARGV5=$5 # Fifth argument is Base folder of LoxBerry
 
 # Unzipping Owncloud Sources
 echo "<INFO> Unzipping Owncloud Sources..."
-/usr/bin/unzip -d /tmp $ARGV5/data/plugins/$ARGV3/owncloud.zip
-rm -r -v $ARGV5/data/plugins/$ARGV3/owncloud.zip
+/usr/bin/unzip -d /tmp /tmp/owncloud.zip
+rm -v /tmp/owncloud.zip
 echo "<INFO> Installing Owncloud Sources..."
 mv -v /tmp/owncloud/* $ARGV5/webfrontend/html/plugins/$ARGV3/
 mv -v /tmp/owncloud/.* $ARGV5/webfrontend/html/plugins/$ARGV3/

@@ -22,19 +22,18 @@
 
 # To use important variables from command line use the following code:
 ARGV0=$0 # Zero argument is shell command
-#echo "<INFO> Command is: $ARGV0"
-
 ARGV1=$1 # First argument is temp folder during install
-#echo "<INFO> Temporary folder is: $ARGV1"
-
 ARGV2=$2 # Second argument is Plugin-Name for scipts etc.
-#echo "<INFO> (Short) Name is: $ARGV2"
-
 ARGV3=$3 # Third argument is Plugin installation folder
-#echo "<INFO> Installation folder is: $ARGV3"
-
 ARGV4=$4 # Forth argument is Plugin version
-#echo "<INFO> Installation folder is: $ARGV4"
+echo "<INFO> Getting Owncloud Sourcen from https://download.owncloud.org"
+/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-9.1.1.zip
+if [ ! -f /tmp/owncloud.zip ]; then
+    echo "<FAIL> Something went wrong while trying to download Owncloud Sources."
+    exit 1
+else
+    echo "<OK> Owncloud Soruces downloaded successfully."
+fi
 
 # Exit with Status 0
 exit 0
