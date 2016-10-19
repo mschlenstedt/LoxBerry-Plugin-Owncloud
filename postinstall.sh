@@ -39,7 +39,6 @@ rm -r -v /tmp/owncloud
 
 # Move Dummy Config file to installation and replacing dummy vars
 echo "<INFO> Installing Dummy Config..."
-mv -v $ARGV5/data/plugins/$ARGV3/config.php $ARGV5/config/plugins/$ARGV3/
 ln -s $ARGV5/config/plugins/$ARGV3/config.php $ARGV5/webfrontend/html/plugins/$ARGV3/config/config.php
 
 /bin/sed -i "s:REPLACEFOLDERNAME:$ARGV3:" $ARGV5/config/plugins/$ARGV3/config.php
