@@ -65,7 +65,7 @@ $lang =~ tr/a-z//cd;
 $lang = substr($lang,0,2);
 
 # If there's no file in our language, use german as default
-if (!-e "$installfolder/templates/plugins/$psubfolder/$lang/isettings.html") {
+if (!-e "$installfolder/templates/plugins/$psubfolder/$lang/settings.html") {
 	$lang = "de";
 }
 
