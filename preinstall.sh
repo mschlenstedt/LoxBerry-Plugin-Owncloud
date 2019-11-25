@@ -27,7 +27,8 @@ ARGV2=$2 # Second argument is Plugin-Name for scipts etc.
 ARGV3=$3 # Third argument is Plugin installation folder
 ARGV4=$4 # Forth argument is Plugin version
 echo "<INFO> Getting Owncloud Sourcen from https://download.owncloud.org"
-/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-9.1.1.zip
+#/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-9.1.1.zip
+/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-10.3.1.zip
 if [ ! -f /tmp/owncloud.zip ]; then
     echo "<FAIL> Something went wrong while trying to download Owncloud Sources."
     exit 1
