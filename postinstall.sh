@@ -28,21 +28,27 @@ ARGV3=$3 # Third argument is Plugin installation folder
 ARGV4=$4 # Forth argument is Plugin version
 ARGV5=$5 # Fifth argument is Base folder of LoxBerry
 
+echo "<INFO> Getting Owncloud Sources from https://download.owncloud.org/community/"
+/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-latest.zip
+if [ ! -f REPLACELBPHTMLDIR/owncloud.zip ]; then
+    echo "<FAIL> Something went wrong while trying to download Owncloud Sources."
+    exit 1
+else
+    echo "<OK> Owncloud Sources downloaded successfully."
+fi
+
 # Unzipping Owncloud Sources
 echo "<INFO> Unzipping Owncloud Sources..."
-/usr/bin/unzip -d /tmp /tmp/owncloud.zip
-rm -v /tmp/owncloud.zip
+/usr/bin/unzip -d REPLACELBPHTMLDIR REPLACELBPHTMLDIR/owncloud.zip
+rm REPLACELBPHTMLDIR/owncloud.zip
 echo "<INFO> Installing Owncloud Sources..."
-mv -v /tmp/owncloud/* $ARGV5/webfrontend/html/plugins/$ARGV3/
-mv -v /tmp/owncloud/.* $ARGV5/webfrontend/html/plugins/$ARGV3/
-rm -r -v /tmp/owncloud
+mv REPLACELBPHTMLDIR/owncloud/* REPLACELBPHTMLDIR
+mv REPLACELBPHTMLDIR/owncloud/.* REPLACELBPHTMLDIR
+rm -r REPLACELBPHTMLDIR/owncloud
 
 # Move Dummy Config file to installation and replacing dummy vars
 echo "<INFO> Installing Dummy Config..."
 ln -s $ARGV5/config/plugins/$ARGV3/config.php $ARGV5/webfrontend/html/plugins/$ARGV3/config/config.php
-
-/bin/sed -i "s:REPLACEFOLDERNAME:$ARGV3:" $ARGV5/config/plugins/$ARGV3/config.php
-/bin/sed -i "s:REPLACEINSTALLFOLDER:$ARGV5:" $ARGV5/config/plugins/$ARGV3/config.php
 
 # Exit with Status 0
 exit 0
