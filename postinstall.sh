@@ -29,7 +29,7 @@ ARGV4=$4 # Forth argument is Plugin version
 ARGV5=$5 # Fifth argument is Base folder of LoxBerry
 
 echo "<INFO> Getting Owncloud Sources from https://download.owncloud.org/community/"
-/usr/bin/wget --progress=dot:mega -t 10 -O /tmp/owncloud.zip https://download.owncloud.org/community/owncloud-latest.zip
+/usr/bin/wget --progress=dot:mega -t 10 -O REPLACELBPHTMLDIR/owncloud.zip https://download.owncloud.org/community/owncloud-latest.zip
 if [ ! -f REPLACELBPHTMLDIR/owncloud.zip ]; then
     echo "<FAIL> Something went wrong while trying to download Owncloud Sources."
     exit 1
